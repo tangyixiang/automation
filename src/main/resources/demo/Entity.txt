@@ -1,0 +1,13 @@
+package com.resortcloud.ticket.site.entity;
+
+import com.resortcloud.common.base.annotation.DbPrimaryKey;
+import lombok.Data;
+
+@Data
+public class ${entity]} {
+
+    @DbPrimaryKey
+    private long id;
+
+
+}

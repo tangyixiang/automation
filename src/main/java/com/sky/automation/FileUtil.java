@@ -1,8 +1,7 @@
 package com.sky.automation;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -22,6 +21,7 @@ public class FileUtil {
     private static String outputFilePath = (String) props.get("template.out.filepath");
     private static String function = (String) props.get("template.entity.classname");
     private static String basePackage = (String) props.get("template.project.package");
+    private static String enableDefault = (String) props.get("template.enable.default");
 
 
     public static void readTemplateConfig() throws IOException {
@@ -30,8 +30,18 @@ public class FileUtil {
         props.load(in);
     }
 
+    public static Properties getProps() {
+        return props;
+    }
+
     public static List<String> listAllTemplate() throws IOException {
-        File file = new File(templateFilePath);
+        File file = null;
+        if (enableDefault.equals("true")) {
+            URL resource = FileUtil.class.getClassLoader().getResource("demo");
+            file = new File(resource.getPath());
+        } else {
+            file = new File(templateFilePath);
+        }
         if (file.exists()) {
             List<String> fileList = new ArrayList<>();
             if (file.isDirectory()) {
@@ -48,17 +58,21 @@ public class FileUtil {
     }
 
     // 读取模板文件
-    public BufferedReader readTemplate(String filePath) throws FileNotFoundException {
+    public static BufferedReader readTemplate(String filePath) throws FileNotFoundException {
         return new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
     }
 
     // 将文件写出到目标路径
-    public static void outputFile(String targetPath, String content) throws IOException {
-        FileOutputStream outputStream = new FileOutputStream(targetPath);
+    public static void outputFile(String parentDir, String fileName, String content) throws IOException {
+        String dirPath = outputFilePath + "/" + parentDir;
+        String filePath = outputFilePath + "/" + fileName;
+        File targetParentDir = new File(dirPath);
+        if (!targetParentDir.exists()) {
+            targetParentDir.mkdirs();
+        }
+        FileOutputStream outputStream = new FileOutputStream(filePath);
         outputStream.write(content.getBytes());
         outputStream.flush();
         outputStream.close();
-
     }
-
 }

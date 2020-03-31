@@ -1,0 +1,18 @@
+package com.resortcloud.ticket.site.controller${modelname};
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@RestController
+@RequestMapping("${requestpath}")
+public class ${entity}Controller {
+
+    private final Logger log = LogManager.getLogger(${entity}Controller.class);
+    
+    @Autowired
+    private ${entity}Service  ${lowentity}Service
+
+
+
+
+}

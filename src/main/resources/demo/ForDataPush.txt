@@ -1,0 +1,16 @@
+package com.resortcloud.ticket.site.entity.amqp.message;
+
+import com.resortcloud.common.base.annotation.CorrelationNameField;
+import com.resortcloud.common.base.annotation.DbPrimaryKey;
+import com.resortcloud.ticket.site.entity.${entity};
+import lombok.Data;
+
+@Data
+public class ${entity}ForDataPush {
+
+    @DbPrimaryKey
+    @CorrelationNameField
+    private Long id;
+    private ${entity} ${lowentity};
+    
+}

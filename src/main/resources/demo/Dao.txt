@@ -1,0 +1,20 @@
+package com.resortcloud.ticket.site.dao;
+
+import com.resortcloud.ticket.site.entity.${entity};
+import com.resortcloud.ticket.site.query.${entity}eQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+@Component
+public class ${entity}Dao extends BaseDao<${entity}, ${entity}Query,Object> {
+
+    @Autowired
+    private NamedParameterJdbcTemplate jdbcTemplate;
+
+    @Override
+    public NamedParameterJdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
+
+}

@@ -1,0 +1,10 @@
+AmqpMessagesService类中添加方法
+
+//添加方法
+public AmqpMessage add${entity}AddMessage(${entity} ${lowentity}) {
+        ${entity}ForDataPush ${lowentity}ForDataPush = DataHelpers.factory(${entity}ForDataPush.class);
+        ${lowentity}ForDataPush.setId(data.getId());
+        ${lowentity}ForDataPush.set${entity}(data);
+        AmqpData amqpData = createDataUpdate(${lowentity}ForDataPush);
+        return addMessageToSend(amqpData);
+    }

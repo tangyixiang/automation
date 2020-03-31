@@ -1,0 +1,27 @@
+package com.resortcloud.ticket.site.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.resortcloud.ticket.site.service.amqp.AmqpPushService;
+import com.resortcloud.ticket.site.service.amqp.AmqpMessagesService;
+
+
+@Service
+public class ${entity}Service {
+
+    @Autowired
+    private ${entity}Dao ${lowentity}Dao;
+
+    @Autowired
+    private AmqpMessagesService amqpMessagesService;
+    @Autowired
+    private AmqpPushService amqpPushService;
+
+
+    private void syncDataToServer(${entity} data){
+        amqpMessagesService.add${entity}AddMessage(data);
+        amqpPushService.trigger();
+    }
+
+}

@@ -11,6 +11,8 @@ public class RegularExpressionUtil {
 
     String last = null;
 
+    private static RegularExpressionUtil util = new RegularExpressionUtil();
+
     public RegularExpressionUtil(){}
 
     public RegularExpressionUtil(Map replaceTextMap) {
@@ -32,13 +34,13 @@ public class RegularExpressionUtil {
         return replaceTextMap;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         RegularExpressionUtil util = new RegularExpressionUtil();
         Map<String, String> textMap = util.getReplaceTextMap();
         textMap.put("a", "zhangsan");
         textMap.put("bizDate", "天气");
         String text = "update demo1 set ptime= a${a} dsd，update demo1 set ptime=${bizDate} sd";
         System.out.println(util.match(text));
-    }
+    }*/
 
 }

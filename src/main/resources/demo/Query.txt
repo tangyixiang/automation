@@ -1,0 +1,10 @@
+package com.resortcloud.ticket.site.query;
+
+import lombok.Data;
+
+@Data
+public class ${entity]Query {
+
+    private long id;
+
+}
