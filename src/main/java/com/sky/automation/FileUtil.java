@@ -19,8 +19,6 @@ public class FileUtil {
     private static Properties props;
     private static String templateFilePath = (String) props.get("template.filepath");
     private static String outputFilePath = (String) props.get("template.out.filepath");
-    private static String function = (String) props.get("template.entity.classname");
-    private static String basePackage = (String) props.get("template.project.package");
     private static String enableDefault = (String) props.get("template.enable.default");
 
 
